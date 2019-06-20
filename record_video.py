@@ -4,7 +4,7 @@ class Record_video():
     def __init__(self):
         self.name = "titi"
 
-    def record(self):
+    def record(self, name):
         cap = cv2.VideoCapture(0)
 
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -12,7 +12,7 @@ class Record_video():
 
         print(weight, height)
 
-        out = cv2.VideoWriter('output.avi', cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 25.0, (weight, height))
+        out = cv2.VideoWriter('{}.avi'.format(name), cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'), 25.0, (weight, height))
 
         while True:
             _, frame = cap.read()
@@ -28,4 +28,5 @@ class Record_video():
 
 if __name__ == "__main__":
     record_video = Record_video()
-    record_video.record()
+    videoName = "output"
+    record_video.record(videoName)
